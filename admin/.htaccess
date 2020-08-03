@@ -1,0 +1,36 @@
+<IfModule mod_rewrite.c>
+     RewriteEngine on
+
+
+     RewriteCond %{REQUEST_FILENAME} !-f
+     RewriteCond %{REQUEST_FILENAME} !-d
+
+Options All -Indexes
+
+AddDefaultCharset utf-8
+
+RewriteRule ^([a-z_]+)/$ LoretoSoft/index.php?ruta=$1 [L]
+RewriteRule ^([a-z_]+)/([a-z0-9_]+)/([a-z0-9_-]+)$ LoretoSoft/$1.php?accion=$2&id=$3 [L]
+RewriteRule ^([a-z_]+)/([a-z_]+)$ LoretoSoft/$1.php?accion=$2 [L]
+
+#RewriteRule ^inicio$ LoretoSoft/index.php [L]
+RewriteRule ^iniciar-sesion$ LoretoSoft/l0g1n.php [L]
+RewriteRule ^iniciar$ LoretoSoft/l0g1n.php?iniciar=true [L]
+RewriteRule ^salir$ LoretoSoft/l0g1n.php?salir=true [L]
+
+
+RewriteRule ^acceso-prohibido$ LoretoSoft/l0g1n.php?acceso_prohibido=true [L]
+RewriteRule ^error-login$ LoretoSoft/l0g1n.php?error_login=true [L]
+RewriteRule ^error_login/(.+)$ LoretoSoft/l0g1n.php?url=$1 [L]
+RewriteRule ^pc_no_autorizado$ LoretoSoft/l0g1n.php?pc_no_autorizado=true [L]
+RewriteRule ^usuario_deshabilitado$ LoretoSoft/l0g1n.php?usuario_deshabilitado=true [L]
+
+
+ 
+  </IfModule>
+
+
+<Files .htaccess>
+Order allow,deny
+Deny from all
+</Files>

@@ -1,0 +1,3 @@
+noticias	1
+paginas		2
+banners		3
